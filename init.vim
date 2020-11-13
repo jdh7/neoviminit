@@ -36,9 +36,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 
 " ----------------------------General Settings---------------------------------
-"Airline Settings
-"let g:airline_theme='base16-spacemacs'
-
 
 "NERDTree settings
 autocmd vimenter * NERDTree c:/Users/John/
@@ -172,20 +169,7 @@ set hidden
 set clipboard+=unnamedplus
 
 " ----------------------------Status Line Settings-----------------------------
-""left side settings
-"set statusline=
-"set statusline+=%#GruvboxAquaBold#
-"set statusline+=\ %M
-"set statusline+=\ %y
-"set statusline+=\ %r
-"set statusline+=\ %F
-""right side settings
-"set statusline+=%= 
-"set statusline+=%#GruvboxBlueBold#
-"set statusline+=\ %c:%l/%L
-"set statusline+=\ %p%%
-"set statusline+=\ [%n]
-"set statusline+=\ Time:\ %{strftime('%c')}" enable tabline
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
