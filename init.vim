@@ -1,7 +1,7 @@
 " TO DO:
 "   - get a snippet manager
-"       + create a *goes in every code header* like shbang + info
-"   - fix COC window, which all the sudden is looking janky AF
+"       + create codeforces autoinsert 
+"   - fix COC window dual pop-up
 "COMPLETED
 "   - get a completion plugin
 "   - change NERDTree default directory
@@ -40,7 +40,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "NERDTree settings
 autocmd vimenter * NERDTree c:/Users/John/
 
-set nocompatible
 set autoread
 set wildmenu
 
