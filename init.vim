@@ -15,7 +15,10 @@ call plug#begin('~/.vim/plugged')
 "   Tools
     Plug 'preservim/nerdtree'
     Plug 'tpope/vim-commentary'
-    Plug 'neoclide/coc.nvim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    
 "   Color Schemes
     Plug 'morhetz/gruvbox'
     Plug 'vim-airline/vim-airline'
@@ -89,7 +92,7 @@ set tabpagemax=10
 set noerrorbells
 set title
 set background=dark
-set cmdheight=1
+set cmdheight=2
 set colorcolumn=81
 set mouse=n
 
@@ -157,6 +160,7 @@ inoremap mk <ESC>
 "Miscellaneous Option
 set noswapfile
 set nobackup
+set nowritebackup
 set undodir=~/.vim/undodir
 set undofile
 set confirm
@@ -217,3 +221,45 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
+
+" Coc explore
+set updatetime=300
+set shortmess+=c
+if has("patch-8.1.1564")
+    set signcolumn=number
+else
+    set signcolumn=yes
+endif
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
